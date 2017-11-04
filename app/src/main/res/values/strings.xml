@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Cryptoconverter</string>
+
+    <string-array name="crypto">
+        <item>bitcoin</item>
+        <item>ethereum</item>
+    </string-array>
+</resources>
