@@ -59,8 +59,14 @@ public class Conversion extends AppCompatActivity {
 
                             String value2 = editText.getText().toString();
                             double inputAmount = Float.parseFloat(value2);
-                            total = (inputAmount * bitcoin)/bitcoinRate;
-                            txt4.setText(page);
+                            total = inputAmount/bitcoinRate;
+                            if(total <= 1)
+                            {
+                                txt4.setText("BITCOIN");
+                            }
+                            else{
+                                txt4.setText("BITCOINS");
+                            }
                             convertedTxt.setText(String.format(Locale.getDefault(),"%.2f", total));
                         }
                     });
@@ -88,15 +94,21 @@ public class Conversion extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             float ethereumRate = Float.parseFloat(currency);
-                            int ethereum = 1;
                             double total;
 
                             //this get the inputvalue from the edit text
                             String value2 = editText.getText().toString();
 
                             double inputAmount = Float.parseFloat(value2);
-                            total = (inputAmount * ethereum)/ethereumRate;
-                            txt4.setText(page);
+                            total = inputAmount/ethereumRate;
+
+                            if(total <= 1)
+                            {
+                                txt4.setText("ETHEREUM");
+                            }
+                            else{
+                                txt4.setText("ETHEREUMS");
+                            }
 
                             //this show results
                             convertedTxt.setText(String.format(Locale.getDefault(),"%.2f", total));
