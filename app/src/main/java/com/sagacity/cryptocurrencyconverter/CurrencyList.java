@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 
 public class CurrencyList {

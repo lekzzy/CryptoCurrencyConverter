@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -15,21 +15,20 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Ethereum extends AppCompatActivity {
+public class Bitcoin extends AppCompatActivity {
+
     private RecyclerView recyclerView;
     private ProgressDialog progressDialog;
     private RecyclerView.Adapter adapter;
-
     String currenciesCodes = "NGN,USD,EUR,GBP,EGP,OMR,QAR,GHC,KES,CNY,AUD,RUB,KWD,BSD,ZAR,CHF,SAR,JPY,CAD,INR";
-    private String URL_DATA = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC&tsyms=" + currenciesCodes;
+    private String URL = "https://min-api.cryptocompare.com/data/pricemulti?fsyms=ETH,BTC&tsyms=" + currenciesCodes;
     String NGN,USD,EUR,GBP,EGP,OMR,QAR,GHC,KES,CNY,AUD,RUB,KWD,BSD,ZAR,CHF,SAR,JPY,CAD,INR;
 
     private List<CurrencyList> currencyList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ethereum);
+        setContentView(R.layout.activity_bitcoin);
 
         recyclerView = (RecyclerView)findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
@@ -41,6 +40,8 @@ public class Ethereum extends AppCompatActivity {
 
         new GetCurrencies().execute();
 
+        //this handles the recyclerview click to the conversion page
+
         recyclerView.addOnItemTouchListener(new MyRecyclerClickListener(this, recyclerView, new MyRecyclerClickListener
                 .OnItemClickListener() {
             @Override
@@ -51,12 +52,14 @@ public class Ethereum extends AppCompatActivity {
                 args.putString("currency", item.getCurrency());
                 args.putString("country", item.getCountry());
                 args.putString("countryCode", item.getCountryCode());
-                args.putString("EthIntent", "ETHEREUMS");
+
+                args.putString("BitIntent", "BITCOINS");
+
                 Intent i = new Intent();
-                i.setClass(Ethereum.this, Conversion.class);
+                i.setClass(Bitcoin.this, Conversion.class);
                 i.putExtra("bit", args);
-                i.putExtra("bitcoins", "ethereum");
-                Ethereum.this.startActivity(i);
+                i.putExtra("bitcoins", "bitcoins");
+                Bitcoin.this.startActivity(i);
 
             }
 
@@ -67,14 +70,13 @@ public class Ethereum extends AppCompatActivity {
         }));
     }
 
-
     // Async task class
 
-    private class GetCurrencies extends AsyncTask<Void, Void, Void> {
+    private class GetCurrencies extends AsyncTask<Void, Void, Void>{
 
         @Override
         protected void onPreExecute() {
-            progressDialog = new ProgressDialog(Ethereum.this);
+            progressDialog = new ProgressDialog(Bitcoin.this);
             progressDialog.setMessage("Loading");
             progressDialog.setCancelable(false);
             progressDialog.show();
@@ -86,14 +88,14 @@ public class Ethereum extends AppCompatActivity {
 
             //making a request
 
-            String jsonStr = sh.makeServiceCall(URL_DATA);
+            String jsonStr = sh.makeServiceCall(URL);
 
             if (jsonStr!=null){
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    String ETH = jsonObj.getString("ETH");
-                    JSONObject o = new JSONObject(ETH);
+                    String BTC = jsonObj.getString("BTC");
+                    JSONObject o = new JSONObject(BTC);
                     //get the xchange rate from the api
                     NGN = o.getString("NGN");
                     USD = o.getString("USD");
@@ -118,9 +120,7 @@ public class Ethereum extends AppCompatActivity {
 
 
 
-
-
-                    //add countries, country_codes n amount to the list
+                    //add countries, country_codes n amount
                     CurrencyList currency = new CurrencyList("USA", "USD", USD);
                     currencyList.add(currency);
 
@@ -133,7 +133,55 @@ public class Ethereum extends AppCompatActivity {
                     currency = new CurrencyList("UK", "GBP", GBP);
                     currencyList.add(currency);
 
-                    //add the rest of the currenciesCodes n their countries
+                    currency = new CurrencyList("Russia", "RUS", RUB);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Kuwait", "KWT", KWD);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Bahamas", "BHS", BSD);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Saudi Arabia", "SAU", SAR);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Japan", "JPN", JPY);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Canada", "CAN", CAD);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Ghana", "GHN", GHC);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Oman", "OMN", OMR);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Kenya", "KEN", KES);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("China", "CHN", CNY);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Australia", "AUS", AUD);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("South Africa", "ZAF", ZAR);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Switzerland", "CHE", CHF);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Qatar", "QAT", QAR);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("Egypt", "EGY", EGP);
+                    currencyList.add(currency);
+
+                    currency = new CurrencyList("India", "IND", INR);
+                    currencyList.add(currency);
+
+                    // Add the rest of the countries
 
 
 

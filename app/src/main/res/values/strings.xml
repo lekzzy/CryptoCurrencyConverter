@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Cryptoconverter</string>
+    <string name="app_name">Crypto Currency Converter</string>
 
     <string-array name="crypto">
-        <item>bitcoin</item>
-        <item>ethereum</item>
+        <item>BITCOIN</item>
+        <item>ETHEREUM</item>
     </string-array>
 </resources>

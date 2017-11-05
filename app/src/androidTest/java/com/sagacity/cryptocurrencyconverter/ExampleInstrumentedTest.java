@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.alo.cryptocurrencyconverter;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
