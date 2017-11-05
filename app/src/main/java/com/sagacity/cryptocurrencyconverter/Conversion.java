@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -22,33 +22,32 @@ public class Conversion extends AppCompatActivity {
         txt1 =(TextView)findViewById(R.id.page);
         txt2 =(TextView)findViewById(R.id.country);
         txt3 = (TextView)findViewById(R.id.currency);
-        txt4 = (TextView)findViewById(R.id.crypto);
+       txt4 = (TextView)findViewById(R.id.crypto);
         txt5 = (TextView)findViewById(R.id.countryCode);
         convertedTxt = (TextView) findViewById(R.id.convertedText);
         editText = (EditText) findViewById(R.id.editext);
         button = (Button) findViewById(R.id.convertButton);
 
-        Intent i = this.getIntent();
+        Intent intent = this.getIntent();
 
 
-        if (i!=null){
+        if (intent!=null){
 
-            String data = i.getExtras().getString("bitcoins");
+            String data = intent.getExtras().getString("bitcoins");
             //this handles the intent from bitcion page
             if (data.equals("bitcoins")){
                 Bundle bundle = getIntent().getBundleExtra("bit");
                 if (bundle==null){
                     finish();
                 }else {
-                    String page = bundle.getString("BitIntent");
+                  final String page = bundle.getString("BitIntent");
                      String country = bundle.getString("country");
                     String countryCode = bundle.getString("countryCode");
                     final String currency = bundle.getString("currency");
 
                     txt1.setText(page);
-                    txt2.setText(country);
+                    txt2.setText(country +":");
                     txt3.setText(currency);
-                    txt4.setText(page);
                     txt5.setText(countryCode);
 
                     button.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +60,7 @@ public class Conversion extends AppCompatActivity {
                             String value2 = editText.getText().toString();
                             double inputAmount = Float.parseFloat(value2);
                             total = (inputAmount * bitcoin)/bitcoinRate;
-
+                            txt4.setText(page);
                             convertedTxt.setText(String.format(Locale.getDefault(),"%.2f", total));
                         }
                     });
@@ -75,15 +74,14 @@ public class Conversion extends AppCompatActivity {
                 if (bundle==null){
                     finish();
                 }else {
-                    String page = bundle.getString("EthIntent");
+                   final  String page = bundle.getString("EthIntent");
                     String country = bundle.getString("country");
                     String countryCode = bundle.getString("countryCode");
                     final String currency = bundle.getString("currency");
 
                     txt1.setText(page);
-                    txt2.setText(country);
+                    txt2.setText(country+":");
                     txt3.setText(currency);
-                    txt4.setText(page);
                     txt5.setText(countryCode);
 
                     button.setOnClickListener(new View.OnClickListener() {
@@ -98,6 +96,7 @@ public class Conversion extends AppCompatActivity {
 
                             double inputAmount = Float.parseFloat(value2);
                             total = (inputAmount * ethereum)/ethereumRate;
+                            txt4.setText(page);
 
                             //this show results
                             convertedTxt.setText(String.format(Locale.getDefault(),"%.2f", total));

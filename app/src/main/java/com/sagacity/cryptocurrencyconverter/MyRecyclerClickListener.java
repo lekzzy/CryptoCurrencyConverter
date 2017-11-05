@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by alo on 10/27/17.
+ * Created by SAGACITY on 10/27/17.
  */
 
 public class MyRecyclerClickListener implements RecyclerView.OnItemTouchListener {

@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
@@ -27,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.crypto, android.R.layout.simple_spinner_item);
         // specify the layout to use when the list of choices appear
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         //apply adapter to spinner
         spinner.setAdapter(adapter);
         spinner.setOnItemSelectedListener(this);
@@ -49,11 +51,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onClick(View v) {
                 switch (spinMonths){
-                    case "bitcoin":
+                    case "BITCOIN":
                         Intent intent = new Intent(MainActivity.this, Bitcoin.class);
                         startActivity(intent);
                         break;
-                    case "ethereum":
+                    case "ETHEREUM":
                         Intent intent1 = new Intent(MainActivity.this, Ethereum.class);
                         startActivity(intent1);
                 }

@@ -1,4 +1,4 @@
-package com.alo.cryptoconverter;
+package com.sagacity.cryptocurrencyconverter;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
@@ -10,7 +10,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by alo on 10/23/17.
+ * Created by SAGACITY on 10/23/17.
  */
 
 public class HttpHandler {

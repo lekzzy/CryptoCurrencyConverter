@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Cryptoconverter.iml" filepath="$PROJECT_DIR$/Cryptoconverter.iml" />
+      <module fileurl="file://C:\Users\SAGACITY\Downloads\Compressed\Cryptocurrencyconverter\Cryptocurrencyconverter\Cryptoconverter.iml" filepath="C:\Users\SAGACITY\Downloads\Compressed\Cryptocurrencyconverter\Cryptocurrencyconverter\Cryptoconverter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Cryptocurrencyconverter.iml" filepath="$PROJECT_DIR$/Cryptocurrencyconverter.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
